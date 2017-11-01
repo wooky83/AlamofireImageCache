@@ -430,9 +430,9 @@ extension UIButton {
             return
         }
         
-        //wow
+        //wooky83
         if let data = SWFileManager.readImageCache(imageName: url.absoluteString), let req = urlRequest.urlRequest{
-            let image = UIImage(data: data as Data)
+            let image = UIImage(data: data)
             setBackgroundImage(image, for: state)
             imageCache?.add(image!, for: req, withIdentifier: filter?.identifier)
             return
@@ -463,7 +463,8 @@ extension UIButton {
                 
                 if let image = response.result.value {
                     strongSelf.setBackgroundImage(image, for: state)
-                    _ = SWFileManager.writeImageCache(imageName: (urlRequest.url?.absoluteString)!, image: UIImagePNGRepresentation(image) as! NSData)
+                    //wooky83
+                    _ = SWFileManager.writeImageCache(imageName: (urlRequest.url?.absoluteString)!, image: response.data)
                 }
                 
                 strongSelf.setBackgroundImageRequestReceipt(nil, for: state)
