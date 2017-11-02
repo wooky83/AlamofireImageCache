@@ -335,6 +335,100 @@ extension UIImageView {
 
         af_activeRequestReceipt = requestReceipt
     }
+    
+    public func af_setImageCache(
+        withURL url: URL,
+        placeholderImage: UIImage? = nil,
+        filter: ImageFilter? = nil,
+        progress: ImageDownloader.ProgressHandler? = nil,
+        progressQueue: DispatchQueue = DispatchQueue.main,
+        imageTransition: ImageTransition = .noTransition,
+        runImageTransitionIfCached: Bool = false,
+        completion: ((DataResponse<UIImage>) -> Void)? = nil)
+    {
+        let urlRequest = self.urlRequest(with: url)
+        guard !isURLRequestURLEqualToActiveRequestURL(urlRequest) else {
+            let error = AFIError.requestCancelled
+            let response = DataResponse<UIImage>(request: nil, response: nil, data: nil, result: .failure(error))
+            
+            completion?(response)
+            
+            return
+        }
+        
+        af_cancelImageRequest()
+        
+        let imageDownloader = af_imageDownloader ?? UIImageView.af_sharedImageDownloader
+        let imageCache = imageDownloader.imageCache
+        
+        // Use the image from the image cache if it exists
+        if
+            let request = urlRequest.urlRequest,
+            let image = imageCache?.image(for: request, withIdentifier: filter?.identifier)
+        {
+            let response = DataResponse<UIImage>(request: request, response: nil, data: nil, result: .success(image))
+            
+            if runImageTransitionIfCached {
+                let tinyDelay = DispatchTime.now() + Double(Int64(0.001 * Float(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                
+                // Need to let the runloop cycle for the placeholder image to take affect
+                DispatchQueue.main.asyncAfter(deadline: tinyDelay) {
+                    self.run(imageTransition, with: image)
+                    completion?(response)
+                }
+            } else {
+                self.image = image
+                completion?(response)
+            }
+            
+            return
+        }
+        
+        //wooky83
+        if let data = SWFileManager.readImageCache(imageName: url.absoluteString), let req = urlRequest.urlRequest, let image = UIImage(data: data){
+            self.image = image
+            imageCache?.add(image, for: req, withIdentifier: filter?.identifier)
+            completion?(DataResponse<UIImage>(request: urlRequest.urlRequest, response: nil, data: nil, result: .success(image)))
+            return
+        }
+        
+        // Set the placeholder since we're going to have to download
+        if let placeholderImage = placeholderImage { self.image = placeholderImage }
+        
+        // Generate a unique download id to check whether the active request has changed while downloading
+        let downloadID = UUID().uuidString
+        
+        // Download the image, then run the image transition or completion handler
+        let requestReceipt = imageDownloader.download(
+            urlRequest,
+            receiptID: downloadID,
+            filter: filter,
+            progress: progress,
+            progressQueue: progressQueue,
+            completion: { [weak self] response in
+                guard
+                    let strongSelf = self,
+                    strongSelf.isURLRequestURLEqualToActiveRequestURL(response.request) &&
+                        strongSelf.af_activeRequestReceipt?.receiptID == downloadID
+                    else {
+                        completion?(response)
+                        return
+                }
+                
+                if let image = response.result.value {
+                    strongSelf.run(imageTransition, with: image)
+                    //wooky83
+                    _ = SWFileManager.writeImageCache(imageName: (urlRequest.url?.absoluteString)!, image: response.data)
+                }
+                
+                strongSelf.af_activeRequestReceipt = nil
+                
+                completion?(response)
+            }
+        )
+        
+        af_activeRequestReceipt = requestReceipt
+    }
 
     // MARK: - Image Download Cancellation
 

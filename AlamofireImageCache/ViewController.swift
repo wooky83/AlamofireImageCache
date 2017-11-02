@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        btn1.af_setBackgroundImageCache(for: .normal, url: URL(string: "http://pocimg-c.skmcgw.com/upload/feed/feed_20170717145432_40265062.png")!)
+    
+        btn1.af_setBackgroundImageCache(for: .normal, url: URL(string: "http://imgnews.naver.net/image/009/2013/04/02/20130402_1364861141..jpg_59_20130402090906.jpg")!)
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +28,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onBtnClick(_ sender: AnyObject) {
-        btn3.af_setBackgroundImageCache(for: .normal, url: URL(string: "http://pocimg-c.skmcgw.com/upload/feed/feed_20170717145432_40265062.png")!)
+        btn3.af_setBackgroundImageCache(for: .normal, url: URL(string: "http://imgnews.naver.net/image/009/2013/04/02/20130402_1364861141..jpg_59_20130402090906.jpg")!)
     }
 
 }

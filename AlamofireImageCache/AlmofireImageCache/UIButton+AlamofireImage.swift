@@ -239,6 +239,94 @@ extension UIButton {
 
         setImageRequestReceipt(requestReceipt, for: state)
     }
+    
+    public func af_setImageCache(
+        for state: UIControlState,
+        url: URL,
+        placeholderImage: UIImage? = nil,
+        filter: ImageFilter? = nil,
+        progress: ImageDownloader.ProgressHandler? = nil,
+        progressQueue: DispatchQueue = DispatchQueue.main,
+        completion: ((DataResponse<UIImage>) -> Void)? = nil)
+    {
+        let urlRequest = self.urlRequest(with: url)
+        guard !isImageURLRequest(urlRequest, equalToActiveRequestURLForState: state) else {
+            let error = AFIError.requestCancelled
+            let response = DataResponse<UIImage>(request: nil, response: nil, data: nil, result: .failure(error))
+            
+            completion?(response)
+            
+            return
+        }
+        
+        af_cancelImageRequest(for: state)
+        
+        let imageDownloader = af_imageDownloader ?? UIButton.af_sharedImageDownloader
+        let imageCache = imageDownloader.imageCache
+        
+        // Use the image from the image cache if it exists
+        if
+            let request = urlRequest.urlRequest,
+            let image = imageCache?.image(for: request, withIdentifier: filter?.identifier)
+        {
+            let response = DataResponse<UIImage>(
+                request: urlRequest.urlRequest,
+                response: nil,
+                data: nil,
+                result: .success(image)
+            )
+            
+            setImage(image, for: state)
+            completion?(response)
+            
+            return
+        }
+        
+        //wooky83
+        if let data = SWFileManager.readImageCache(imageName: url.absoluteString), let req = urlRequest.urlRequest, let image = UIImage(data: data) {
+            setImage(image, for: state)
+            imageCache?.add(image, for: req, withIdentifier: filter?.identifier)
+            completion?(DataResponse<UIImage>(request: urlRequest.urlRequest, response: nil, data: nil, result: .success(image)))
+            return
+        }
+        
+        // Set the placeholder since we're going to have to download
+        if let placeholderImage = placeholderImage { setImage(placeholderImage, for: state)  }
+        
+        // Generate a unique download id to check whether the active request has changed while downloading
+        let downloadID = UUID().uuidString
+        
+        // Download the image, then set the image for the control state
+        let requestReceipt = imageDownloader.download(
+            urlRequest,
+            receiptID: downloadID,
+            filter: filter,
+            progress: progress,
+            progressQueue: progressQueue,
+            completion: { [weak self] response in
+                guard
+                    let strongSelf = self,
+                    strongSelf.isImageURLRequest(response.request, equalToActiveRequestURLForState: state) &&
+                        strongSelf.imageRequestReceipt(for: state)?.receiptID == downloadID
+                    else {
+                        completion?(response)
+                        return
+                }
+                
+                if let image = response.result.value {
+                    strongSelf.setImage(image, for: state)
+                    //wooky83
+                    _ = SWFileManager.writeImageCache(imageName: (urlRequest.url?.absoluteString)!, image: response.data)
+                }
+                
+                strongSelf.setImageRequestReceipt(nil, for: state)
+                
+                completion?(response)
+            }
+        )
+        
+        setImageRequestReceipt(requestReceipt, for: state)
+    }
 
     /// Cancels the active download request for the image, if one exists.
     public func af_cancelImageRequest(for state: UIControlState) {
@@ -431,10 +519,10 @@ extension UIButton {
         }
         
         //wooky83
-        if let data = SWFileManager.readImageCache(imageName: url.absoluteString), let req = urlRequest.urlRequest{
-            let image = UIImage(data: data)
+        if let data = SWFileManager.readImageCache(imageName: url.absoluteString), let req = urlRequest.urlRequest, let image = UIImage(data: data){
             setBackgroundImage(image, for: state)
-            imageCache?.add(image!, for: req, withIdentifier: filter?.identifier)
+            imageCache?.add(image, for: req, withIdentifier: filter?.identifier)
+            completion?(DataResponse<UIImage>(request: urlRequest.urlRequest, response: nil, data: nil, result: .success(image)))
             return
         }
         
