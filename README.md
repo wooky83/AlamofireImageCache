@@ -6,6 +6,9 @@ Framework AlamofireImage
 
 AlamofireImage에 File Cache 할 수 있는 Method 추가
 기본적으로 Temporary Folder에 저장하며 url.absoluteString 기준 identifier 한다.
+1. is Memory Cache 
+2. is File Cache
+3. urlRequest
 
 
 ## Usage
