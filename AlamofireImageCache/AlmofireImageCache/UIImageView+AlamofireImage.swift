@@ -1,7 +1,7 @@
 //
 //  UIImageView+AlamofireImage.swift
 //
-//  Copyright (c) 2015-2017 Alamofire Software Foundation (http://alamofire.org/)
+//  Copyright (c) 2015-2018 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,12 @@ import Foundation
 
 import UIKit
 
+#if swift(>=4.2)
+public typealias AnimationOptions = UIView.AnimationOptions
+#else
+public typealias AnimationOptions = UIViewAnimationOptions
+#endif
+
 extension UIImageView {
 
     // MARK: - ImageTransition
@@ -45,7 +51,7 @@ extension UIImageView {
         case flipFromTop(TimeInterval)
         case custom(
             duration: TimeInterval,
-            animationOptions: UIViewAnimationOptions,
+            animationOptions: AnimationOptions,
             animations: (UIImageView, Image) -> Void,
             completion: ((Bool) -> Void)?
         )
@@ -75,10 +81,10 @@ extension UIImageView {
         }
 
         /// The animation options of the image transition.
-        public var animationOptions: UIViewAnimationOptions {
+        public var animationOptions: AnimationOptions {
             switch self {
             case .noTransition:
-                return UIViewAnimationOptions()
+                return []
             case .crossDissolve:
                 return .transitionCrossDissolve
             case .curlDown:
@@ -335,7 +341,62 @@ extension UIImageView {
 
         af_activeRequestReceipt = requestReceipt
     }
-    
+
+    // MARK: - Image Download Cancellation
+
+    /// Cancels the active download request, if one exists.
+    public func af_cancelImageRequest() {
+        guard let activeRequestReceipt = af_activeRequestReceipt else { return }
+
+        let imageDownloader = af_imageDownloader ?? UIImageView.af_sharedImageDownloader
+        imageDownloader.cancelRequest(with: activeRequestReceipt)
+
+        af_activeRequestReceipt = nil
+    }
+
+    // MARK: - Image Transition
+
+    /// Runs the image transition on the image view with the specified image.
+    ///
+    /// - parameter imageTransition: The image transition to ran on the image view.
+    /// - parameter image:           The image to use for the image transition.
+    public func run(_ imageTransition: ImageTransition, with image: Image) {
+        UIView.transition(
+            with: self,
+            duration: imageTransition.duration,
+            options: imageTransition.animationOptions,
+            animations: { imageTransition.animations(self, image) },
+            completion: imageTransition.completion
+        )
+    }
+
+    // MARK: - Private - URL Request Helper Methods
+
+    private func urlRequest(with url: URL) -> URLRequest {
+        var urlRequest = URLRequest(url: url)
+
+        for mimeType in DataRequest.acceptableImageContentTypes {
+            urlRequest.addValue(mimeType, forHTTPHeaderField: "Accept")
+        }
+
+        return urlRequest
+    }
+
+    private func isURLRequestURLEqualToActiveRequestURL(_ urlRequest: URLRequestConvertible?) -> Bool {
+        if
+            let currentRequestURL = af_activeRequestReceipt?.request.task?.originalRequest?.url,
+            let requestURL = urlRequest?.urlRequest?.url,
+            currentRequestURL == requestURL
+        {
+            return true
+        }
+
+        return false
+    }
+}
+
+//wooky83 AlamofireImage 3.5.0
+extension UIImageView {
     public func af_setImageCache(
         withURL url: URL,
         placeholderImage: UIImage? = nil,
@@ -346,6 +407,7 @@ extension UIImageView {
         runImageTransitionIfCached: Bool = false,
         completion: ((DataResponse<UIImage>) -> Void)? = nil)
     {
+        //wooky83
         let urlRequest = self.urlRequest(with: url)
         guard !isURLRequestURLEqualToActiveRequestURL(urlRequest) else {
             let error = AFIError.requestCancelled
@@ -418,7 +480,7 @@ extension UIImageView {
                 if let image = response.result.value {
                     strongSelf.run(imageTransition, with: image)
                     //wooky83
-                    _ = SWFileManager.writeImageCache(imageName: (urlRequest.url?.absoluteString)!, image: response.data)
+                    SWFileManager.writeImageCache(imageName: (urlRequest.url?.absoluteString)!, image: response.data)
                 }
                 
                 strongSelf.af_activeRequestReceipt = nil
@@ -428,58 +490,6 @@ extension UIImageView {
         )
         
         af_activeRequestReceipt = requestReceipt
-    }
-
-    // MARK: - Image Download Cancellation
-
-    /// Cancels the active download request, if one exists.
-    public func af_cancelImageRequest() {
-        guard let activeRequestReceipt = af_activeRequestReceipt else { return }
-
-        let imageDownloader = af_imageDownloader ?? UIImageView.af_sharedImageDownloader
-        imageDownloader.cancelRequest(with: activeRequestReceipt)
-
-        af_activeRequestReceipt = nil
-    }
-
-    // MARK: - Image Transition
-
-    /// Runs the image transition on the image view with the specified image.
-    ///
-    /// - parameter imageTransition: The image transition to ran on the image view.
-    /// - parameter image:           The image to use for the image transition.
-    public func run(_ imageTransition: ImageTransition, with image: Image) {
-        UIView.transition(
-            with: self,
-            duration: imageTransition.duration,
-            options: imageTransition.animationOptions,
-            animations: { imageTransition.animations(self, image) },
-            completion: imageTransition.completion
-        )
-    }
-
-    // MARK: - Private - URL Request Helper Methods
-
-    private func urlRequest(with url: URL) -> URLRequest {
-        var urlRequest = URLRequest(url: url)
-
-        for mimeType in DataRequest.acceptableImageContentTypes {
-            urlRequest.addValue(mimeType, forHTTPHeaderField: "Accept")
-        }
-
-        return urlRequest
-    }
-
-    private func isURLRequestURLEqualToActiveRequestURL(_ urlRequest: URLRequestConvertible?) -> Bool {
-        if
-            let currentRequestURL = af_activeRequestReceipt?.request.task?.originalRequest?.url,
-            let requestURL = urlRequest?.urlRequest?.url,
-            currentRequestURL == requestURL
-        {
-            return true
-        }
-
-        return false
     }
 }
 

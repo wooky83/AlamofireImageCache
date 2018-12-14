@@ -8,24 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		0631C69578A525941C72BB81 /* Pods_AlamofireImageCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A265C580C3CC3307B2BC0929 /* Pods_AlamofireImageCache.framework */; };
+		3C31EC7421C3713000434315 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC6B21C3712F00434315 /* ImageDownloader.swift */; };
+		3C31EC7521C3713000434315 /* UIImageView+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC6C21C3712F00434315 /* UIImageView+AlamofireImage.swift */; };
+		3C31EC7621C3713000434315 /* AFIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC6D21C3712F00434315 /* AFIError.swift */; };
+		3C31EC7721C3713000434315 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC6E21C3712F00434315 /* Image.swift */; };
+		3C31EC7821C3713000434315 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC6F21C3712F00434315 /* ImageCache.swift */; };
+		3C31EC7921C3713000434315 /* UIImage+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC7021C3712F00434315 /* UIImage+AlamofireImage.swift */; };
+		3C31EC7A21C3713000434315 /* UIButton+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC7121C3713000434315 /* UIButton+AlamofireImage.swift */; };
+		3C31EC7B21C3713000434315 /* Request+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC7221C3713000434315 /* Request+AlamofireImage.swift */; };
+		3C31EC7C21C3713000434315 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31EC7321C3713000434315 /* ImageFilter.swift */; };
 		3C94083B1FA86D520041AB30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94083A1FA86D520041AB30 /* AppDelegate.swift */; };
 		3C94083D1FA86D520041AB30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94083C1FA86D520041AB30 /* ViewController.swift */; };
 		3C9408401FA86D520041AB30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C94083E1FA86D520041AB30 /* Main.storyboard */; };
 		3C9408421FA86D520041AB30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C9408411FA86D520041AB30 /* Assets.xcassets */; };
 		3C9408451FA86D520041AB30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C9408431FA86D520041AB30 /* LaunchScreen.storyboard */; };
-		3C9408561FA86EB60041AB30 /* AFIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9408501FA86DAD0041AB30 /* AFIError.swift */; };
-		3C9408571FA86EB80041AB30 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9408541FA86DAD0041AB30 /* Image.swift */; };
-		3C9408581FA86EBB0041AB30 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9408551FA86DAD0041AB30 /* ImageCache.swift */; };
-		3C9408591FA86EBD0041AB30 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94084D1FA86DAD0041AB30 /* ImageDownloader.swift */; };
-		3C94085A1FA86EBF0041AB30 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9408511FA86DAD0041AB30 /* ImageFilter.swift */; };
-		3C94085B1FA86EC10041AB30 /* Request+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9408521FA86DAD0041AB30 /* Request+AlamofireImage.swift */; };
-		3C94085C1FA86EC30041AB30 /* UIButton+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9408531FA86DAD0041AB30 /* UIButton+AlamofireImage.swift */; };
-		3C94085D1FA86EC40041AB30 /* UIImage+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94084E1FA86DAD0041AB30 /* UIImage+AlamofireImage.swift */; };
-		3C94085E1FA86EC60041AB30 /* UIImageView+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94084F1FA86DAD0041AB30 /* UIImageView+AlamofireImage.swift */; };
-		3C9408601FA8701F0041AB30 /* SWFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94085F1FA8701F0041AB30 /* SWFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C31EC6B21C3712F00434315 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		3C31EC6C21C3712F00434315 /* UIImageView+AlamofireImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+AlamofireImage.swift"; sourceTree = "<group>"; };
+		3C31EC6D21C3712F00434315 /* AFIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFIError.swift; sourceTree = "<group>"; };
+		3C31EC6E21C3712F00434315 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		3C31EC6F21C3712F00434315 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		3C31EC7021C3712F00434315 /* UIImage+AlamofireImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+AlamofireImage.swift"; sourceTree = "<group>"; };
+		3C31EC7121C3713000434315 /* UIButton+AlamofireImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+AlamofireImage.swift"; sourceTree = "<group>"; };
+		3C31EC7221C3713000434315 /* Request+AlamofireImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+AlamofireImage.swift"; sourceTree = "<group>"; };
+		3C31EC7321C3713000434315 /* ImageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFilter.swift; sourceTree = "<group>"; };
 		3C9408371FA86D520041AB30 /* AlamofireImageCache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlamofireImageCache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C94083A1FA86D520041AB30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C94083C1FA86D520041AB30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,16 +41,6 @@
 		3C9408411FA86D520041AB30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C9408441FA86D520041AB30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C9408461FA86D520041AB30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C94084D1FA86DAD0041AB30 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
-		3C94084E1FA86DAD0041AB30 /* UIImage+AlamofireImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AlamofireImage.swift"; sourceTree = "<group>"; };
-		3C94084F1FA86DAD0041AB30 /* UIImageView+AlamofireImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+AlamofireImage.swift"; sourceTree = "<group>"; };
-		3C9408501FA86DAD0041AB30 /* AFIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFIError.swift; sourceTree = "<group>"; };
-		3C9408511FA86DAD0041AB30 /* ImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilter.swift; sourceTree = "<group>"; };
-		3C9408521FA86DAD0041AB30 /* Request+AlamofireImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+AlamofireImage.swift"; sourceTree = "<group>"; };
-		3C9408531FA86DAD0041AB30 /* UIButton+AlamofireImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+AlamofireImage.swift"; sourceTree = "<group>"; };
-		3C9408541FA86DAD0041AB30 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		3C9408551FA86DAD0041AB30 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		3C94085F1FA8701F0041AB30 /* SWFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWFileManager.swift; sourceTree = "<group>"; };
 		A265C580C3CC3307B2BC0929 /* Pods_AlamofireImageCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireImageCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A934FDC3491D348A97A191DE /* Pods-AlamofireImageCache.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireImageCache.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireImageCache/Pods-AlamofireImageCache.release.xcconfig"; sourceTree = "<group>"; };
 		AECF383DE7C223099BBAFA4F /* Pods-AlamofireImageCache.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireImageCache.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireImageCache/Pods-AlamofireImageCache.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,16 +93,15 @@
 		3C94084C1FA86D9F0041AB30 /* AlmofireImageCache */ = {
 			isa = PBXGroup;
 			children = (
-				3C9408501FA86DAD0041AB30 /* AFIError.swift */,
-				3C9408541FA86DAD0041AB30 /* Image.swift */,
-				3C9408551FA86DAD0041AB30 /* ImageCache.swift */,
-				3C94084D1FA86DAD0041AB30 /* ImageDownloader.swift */,
-				3C9408511FA86DAD0041AB30 /* ImageFilter.swift */,
-				3C9408521FA86DAD0041AB30 /* Request+AlamofireImage.swift */,
-				3C9408531FA86DAD0041AB30 /* UIButton+AlamofireImage.swift */,
-				3C94084E1FA86DAD0041AB30 /* UIImage+AlamofireImage.swift */,
-				3C94084F1FA86DAD0041AB30 /* UIImageView+AlamofireImage.swift */,
-				3C94085F1FA8701F0041AB30 /* SWFileManager.swift */,
+				3C31EC6D21C3712F00434315 /* AFIError.swift */,
+				3C31EC6E21C3712F00434315 /* Image.swift */,
+				3C31EC6F21C3712F00434315 /* ImageCache.swift */,
+				3C31EC6B21C3712F00434315 /* ImageDownloader.swift */,
+				3C31EC7321C3713000434315 /* ImageFilter.swift */,
+				3C31EC7221C3713000434315 /* Request+AlamofireImage.swift */,
+				3C31EC7121C3713000434315 /* UIButton+AlamofireImage.swift */,
+				3C31EC7021C3712F00434315 /* UIImage+AlamofireImage.swift */,
+				3C31EC6C21C3712F00434315 /* UIImageView+AlamofireImage.swift */,
 			);
 			path = AlmofireImageCache;
 			sourceTree = "<group>";
@@ -249,18 +246,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C9408581FA86EBB0041AB30 /* ImageCache.swift in Sources */,
 				3C94083D1FA86D520041AB30 /* ViewController.swift in Sources */,
-				3C9408571FA86EB80041AB30 /* Image.swift in Sources */,
-				3C9408601FA8701F0041AB30 /* SWFileManager.swift in Sources */,
+				3C31EC7721C3713000434315 /* Image.swift in Sources */,
+				3C31EC7C21C3713000434315 /* ImageFilter.swift in Sources */,
+				3C31EC7421C3713000434315 /* ImageDownloader.swift in Sources */,
+				3C31EC7621C3713000434315 /* AFIError.swift in Sources */,
+				3C31EC7A21C3713000434315 /* UIButton+AlamofireImage.swift in Sources */,
+				3C31EC7521C3713000434315 /* UIImageView+AlamofireImage.swift in Sources */,
+				3C31EC7B21C3713000434315 /* Request+AlamofireImage.swift in Sources */,
+				3C31EC7821C3713000434315 /* ImageCache.swift in Sources */,
+				3C31EC7921C3713000434315 /* UIImage+AlamofireImage.swift in Sources */,
 				3C94083B1FA86D520041AB30 /* AppDelegate.swift in Sources */,
-				3C94085E1FA86EC60041AB30 /* UIImageView+AlamofireImage.swift in Sources */,
-				3C94085C1FA86EC30041AB30 /* UIButton+AlamofireImage.swift in Sources */,
-				3C9408591FA86EBD0041AB30 /* ImageDownloader.swift in Sources */,
-				3C9408561FA86EB60041AB30 /* AFIError.swift in Sources */,
-				3C94085B1FA86EC10041AB30 /* Request+AlamofireImage.swift in Sources */,
-				3C94085D1FA86EC40041AB30 /* UIImage+AlamofireImage.swift in Sources */,
-				3C94085A1FA86EBF0041AB30 /* ImageFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
