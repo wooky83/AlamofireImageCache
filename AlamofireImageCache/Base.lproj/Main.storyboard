@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,52 +12,77 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AlamofireImageCache" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uF-mi-b9Z">
-                                <rect key="frame" x="82" y="120" width="211" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Img">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4h1-gi-vaP">
-                                <rect key="frame" x="112" y="198" width="211" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ImageCache">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jr6-iS-0Pv">
-                                <rect key="frame" x="12" y="230" width="109" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="BtnImageCache"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uF-mi-b9Z">
+                                <rect key="frame" x="112.5" y="100" width="150" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <state key="normal" title="UIImageView + Cache"/>
                                 <connections>
-                                    <action selector="onBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ycr-FX-SPe"/>
+                                    <action selector="onImageClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xv6-Lz-Sh9"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eE-fO-6es">
-                                <rect key="frame" x="155" y="308" width="157" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jr6-iS-0Pv">
+                                <rect key="frame" x="106" y="250" width="163" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <state key="normal" title="UIButton + CacheImage"/>
+                                <connections>
+                                    <action selector="onBtnImgClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IqB-3c-QhO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4h1-gi-vaP">
+                                <rect key="frame" x="64.5" y="400" width="246" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <state key="normal" title="UIButton + BackgroundCacheImage"/>
+                                <connections>
+                                    <action selector="onBtnBgImgClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5py-6F-Kr5"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3eE-fO-6es">
+                                <rect key="frame" x="137.5" y="140" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="aWh-an-Em0"/>
+                                    <constraint firstAttribute="height" constant="100" id="dOC-JY-xBR"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjx-LZ-NlC">
-                                <rect key="frame" x="12" y="336" width="101" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="UIImageCache"/>
-                                <connections>
-                                    <action selector="onImgClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mVG-gg-0QI"/>
-                                </connections>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajn-0m-QqW">
+                                <rect key="frame" x="137.5" y="290" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="oZy-8V-iM9"/>
+                                    <constraint firstAttribute="height" constant="100" id="vpr-LY-zkq"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waf-Hs-Nh8">
+                                <rect key="frame" x="137.5" y="440" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Fgj-az-Enu"/>
+                                    <constraint firstAttribute="width" constant="100" id="t06-Kq-RDC"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="waf-Hs-Nh8" firstAttribute="centerX" secondItem="3eE-fO-6es" secondAttribute="centerX" id="153-TO-nKg"/>
+                            <constraint firstItem="4h1-gi-vaP" firstAttribute="top" secondItem="Jr6-iS-0Pv" secondAttribute="bottom" constant="120" id="4I5-Wg-q4p"/>
+                            <constraint firstItem="Ajn-0m-QqW" firstAttribute="top" secondItem="Jr6-iS-0Pv" secondAttribute="bottom" constant="10" id="A4f-7f-qWf"/>
+                            <constraint firstItem="Jr6-iS-0Pv" firstAttribute="top" secondItem="3uF-mi-b9Z" secondAttribute="bottom" constant="120" id="ACV-PR-M6l"/>
+                            <constraint firstItem="3uF-mi-b9Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G85-So-p0i"/>
+                            <constraint firstItem="3eE-fO-6es" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gca-ph-eZN"/>
+                            <constraint firstItem="4h1-gi-vaP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ONn-aS-bKl"/>
+                            <constraint firstItem="Jr6-iS-0Pv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eMa-Ip-Gra"/>
+                            <constraint firstItem="3uF-mi-b9Z" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="100" id="sgY-Mm-2td"/>
+                            <constraint firstItem="Ajn-0m-QqW" firstAttribute="centerX" secondItem="3eE-fO-6es" secondAttribute="centerX" id="uaL-Vh-0Ng"/>
+                            <constraint firstItem="3eE-fO-6es" firstAttribute="top" secondItem="3uF-mi-b9Z" secondAttribute="bottom" constant="10" id="xIM-u1-d0d"/>
+                            <constraint firstItem="waf-Hs-Nh8" firstAttribute="top" secondItem="4h1-gi-vaP" secondAttribute="bottom" constant="10" id="ycr-vl-5zm"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="btn1" destination="3uF-mi-b9Z" id="h9m-dv-R5L"/>
-                        <outlet property="btn2" destination="Jr6-iS-0Pv" id="qUc-mY-2V0"/>
-                        <outlet property="btn3" destination="4h1-gi-vaP" id="wLJ-VX-bdE"/>
+                        <outlet property="btn1" destination="Ajn-0m-QqW" id="CTV-Eh-mPu"/>
+                        <outlet property="btn2" destination="waf-Hs-Nh8" id="Ymn-ix-Cd4"/>
                         <outlet property="imgView" destination="3eE-fO-6es" id="Xg9-ds-c2p"/>
                     </connections>
                 </viewController>
@@ -68,4 +91,9 @@
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

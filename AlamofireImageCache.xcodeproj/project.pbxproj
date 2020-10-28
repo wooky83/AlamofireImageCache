@@ -93,17 +93,25 @@
 		3C94084C1FA86D9F0041AB30 /* AlmofireImageCache */ = {
 			isa = PBXGroup;
 			children = (
+				3CECDB342549268000DFF9D6 /* Cusom */,
 				3C31EC6D21C3712F00434315 /* AFIError.swift */,
 				3C31EC6E21C3712F00434315 /* Image.swift */,
 				3C31EC6F21C3712F00434315 /* ImageCache.swift */,
 				3C31EC6B21C3712F00434315 /* ImageDownloader.swift */,
 				3C31EC7321C3713000434315 /* ImageFilter.swift */,
 				3C31EC7221C3713000434315 /* Request+AlamofireImage.swift */,
-				3C31EC7121C3713000434315 /* UIButton+AlamofireImage.swift */,
 				3C31EC7021C3712F00434315 /* UIImage+AlamofireImage.swift */,
-				3C31EC6C21C3712F00434315 /* UIImageView+AlamofireImage.swift */,
 			);
 			path = AlmofireImageCache;
+			sourceTree = "<group>";
+		};
+		3CECDB342549268000DFF9D6 /* Cusom */ = {
+			isa = PBXGroup;
+			children = (
+				3C31EC7121C3713000434315 /* UIButton+AlamofireImage.swift */,
+				3C31EC6C21C3712F00434315 /* UIImageView+AlamofireImage.swift */,
+			);
+			path = Cusom;
 			sourceTree = "<group>";
 		};
 		539A933E65A643D85DA7A1AE /* Frameworks */ = {
@@ -135,7 +143,6 @@
 				3C9408341FA86D520041AB30 /* Frameworks */,
 				3C9408351FA86D520041AB30 /* Resources */,
 				1597F4E33930603AE742A541 /* [CP] Embed Pods Frameworks */,
-				F151D2110A13470D58FC324D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,13 +207,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AlamofireImageCache/Pods-AlamofireImageCache-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireImageCache/Pods-AlamofireImageCache-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AlamofireImageCache/Pods-AlamofireImageCache-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4D252F2A28E61448823987A5 /* [CP] Check Pods Manifest.lock */ = {
@@ -215,28 +225,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AlamofireImageCache-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F151D2110A13470D58FC324D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireImageCache/Pods-AlamofireImageCache-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
