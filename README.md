@@ -14,12 +14,12 @@ AlamofireImage에 File Cache 할 수 있는 Method 추가 :+1:<br/>
 ```swift
 
 let bgBtn = UIButton()
-bgBtn.af_setBackgroundImageCache(for: .normal, url: URL(string: "http://imgUrl")!)
+bgBtn.af.setCacheImage(for: .normal, url: URL(string: "http://imgUrl")!)
 
 let imgBtn = UIButton()
-imgBtn.af_setImageCache(for: .normal, url: URL(string: "http://imgUrl")!)
+imgBtn.af.setCacheImage(for: .normal, url: URL(string: "http://imgUrl")!)
 
 let imgView = UIImageView()
-imgView.af_setImageCache(withURL: URL(string: "http://imgUrl")!)
+imgView.af.setCacheImage(withURL: URL(string: "http://imgUrl")!)
 
 ```
