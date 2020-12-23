@@ -17,7 +17,7 @@ let bgBtn = UIButton()
 bgBtn.af.setCacheImage(for: .normal, url: URL(string: "http://imgUrl")!)
 
 let imgBtn = UIButton()
-imgBtn.af.setCacheImage(for: .normal, url: URL(string: "http://imgUrl")!)
+imgBtn.af.setBackgroundCacheImage(for: .normal, url: URL(string: "http://imgUrl")!)
 
 let imgView = UIImageView()
 imgView.af.setCacheImage(withURL: URL(string: "http://imgUrl")!)
